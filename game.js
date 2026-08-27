@@ -106,6 +106,10 @@ const COIN_ART_FILES = [
   "05-edge-return.png", "06-reappearing.png", "07-near-front.png", "08-front-loop.png"
 ];
 
+const WALKCYCLE_ART_FILES = [
+  "1.png", "2.png", "3.png", "4.png", "5.png", "6.png", "7.png", "8.png"
+];
+
 const assetPromises = [
   loadArt("background", "assets/background.png"),
   loadArt("ground", "assets/ground.png", true),
@@ -117,6 +121,7 @@ const assetPromises = [
 for (const [state, filename] of Object.entries(MERLIN_ART_FILES)) assetPromises.push(loadArt(`merlin:${state}`, `assets/runtime/merlin/${filename}`, "light"));
 for (const [state, filename] of Object.entries(ENEMY_ART_FILES)) assetPromises.push(loadArt(`enemy:${state}`, `assets/runtime/enemy/${filename}`, "light"));
 COIN_ART_FILES.forEach((filename, index) => assetPromises.push(loadArt(`coin:${index}`, `assets/runtime/coin/${filename}`, "light")));
+WALKCYCLE_ART_FILES.forEach((filename, index) => assetPromises.push(loadArt(`merlin:walkcycle:${index}`, `assets/runtime/walkcycle/${filename}`, true)));
 window.__assetsReady = Promise.all(assetPromises);
 
 function drawArt(asset, x, y, width, height) {
@@ -1485,7 +1490,10 @@ function drawWizardFallback() {
 
 function drawWizard() {
   const moving = player.state === "andando" || player.state === "correndo";
-  const asset = art[`merlin:${player.state}`] || (moving ? art.merlinWalking : art.merlinIdle);
+  const walkFrame = Math.floor(game.time * (player.state === "correndo" ? 12 : 8)) % WALKCYCLE_ART_FILES.length;
+  const asset = moving
+    ? (art[`merlin:walkcycle:${walkFrame}`] || art[`merlin:${player.state}`] || art.merlinWalking)
+    : (art[`merlin:${player.state}`] || art.merlinIdle);
   if (!asset?.ready) {
     drawWizardFallback();
     return;
