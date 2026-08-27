@@ -1,9 +1,10 @@
-const CACHE = "mini-merlin-v2";
+const CACHE = "mini-merlin-v3";
 const ASSETS = [
   "./", "./index.html", "./styles.css", "./game.js", "./icon.svg", "./manifest.webmanifest",
   "./assets/background.png", "./assets/ground.png", "./assets/floating-platform.png",
   "./assets/merlin-idle.png", "./assets/merlin-walking.png", "./assets/enemy.png"
 ];
+ASSETS.push(...Array.from({ length: 8 }, (_, index) => `./assets/runtime/walkcycle/${index + 1}.png`));
 self.addEventListener("install", (event) => event.waitUntil(caches.open(CACHE).then((cache) => cache.addAll(ASSETS)).then(() => self.skipWaiting())));
 self.addEventListener("activate", (event) => event.waitUntil(caches.keys().then((keys) => Promise.all(keys.filter((key) => key !== CACHE).map((key) => caches.delete(key)))).then(() => self.clients.claim())));
 self.addEventListener("fetch", (event) => event.respondWith(caches.match(event.request).then((cached) => cached || fetch(event.request))));

@@ -13,6 +13,12 @@ Original prompt: Criar no repositório mini-merlin um jogo online leve em estilo
 ## TODO
 
 - Próxima expansão sugerida: segundo nível narrativo, chefes históricos/lendários e spritesheet dedicado caso seja criada arte final quadro a quadro.
+- Integrar os 8 recortes do walkcycle fornecidos pelo usuário no estado de caminhada.
+
+## Walkcycle do usuário
+
+- Os oito recortes numerados foram copiados para `assets/runtime/walkcycle/`.
+- Merlin usa os oito quadros em sequência ao andar (8 fps) e ao correr (12 fps).
 
 ## Validação final
 
