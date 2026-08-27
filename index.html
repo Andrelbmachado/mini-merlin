@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#15103a" />
+    <meta name="description" content="Mini Merlin — uma aventura 8-bit pela floresta de Brocéliande." />
+    <link rel="manifest" href="manifest.webmanifest" />
+    <link rel="icon" href="icon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="styles.css?v=4" />
+    <title>Mini Merlin</title>
+  </head>
+  <body>
+    <main class="game-shell">
+      <canvas id="game" width="960" height="540" aria-label="Jogo Mini Merlin"></canvas>
+
+      <section id="start-screen" class="panel" aria-labelledby="game-title">
+        <p class="eyebrow">UMA AVENTURA 8-BIT</p>
+        <h1 id="game-title">MINI MERLIN</h1>
+        <p class="story">A magia de Brocéliande foi dividida em três runas. Encontre-as, enfrente os dragões e abra o caminho até Camelot.</p>
+        <div class="control-grid">
+          <span><kbd>A D</kbd> andar</span><span><kbd>SHIFT</kbd> correr</span>
+          <span><kbd>ESPAÇO</kbd> pular (segure)</span><span><kbd>J</kbd> varinha</span>
+          <span><kbd>K</kbd> bolha</span><span><kbd>U</kbd> rajada frontal</span>
+          <span><kbd>L</kbd> escudo</span><span><kbd>Q</kbd> teleporte</span>
+          <span><kbd>R</kbd> carregar</span><span><kbd>E</kbd> interagir</span>
+          <span><kbd>C</kbd> agachar</span><span><kbd>TAB</kbd> atalhos</span>
+        </div>
+        <button id="start-btn" class="primary">COMEÇAR A JORNADA</button>
+        <p class="hint">Também funciona com controle e toque.</p>
+      </section>
+
+      <div id="ui-buttons" aria-label="Opções do jogo">
+        <button id="shortcuts-btn" type="button" aria-controls="shortcuts-panel">TAB · ATALHOS</button>
+        <button id="sound-btn" type="button" aria-controls="sound-panel" aria-label="Configurações de som">⚙ SOM</button>
+      </div>
+
+      <section id="shortcuts-panel" class="game-modal hidden" aria-labelledby="shortcuts-title" aria-hidden="true">
+        <div class="modal-card shortcuts-card">
+          <p class="eyebrow">GUIA RÁPIDO</p>
+          <h2 id="shortcuts-title">ATALHOS</h2>
+          <div class="shortcut-grid">
+            <span><kbd>A D</kbd><b>Andar</b></span><span><kbd>SHIFT</kbd><b>Correr</b></span>
+            <span><kbd>ESPAÇO</kbd><b>Pular · segure mais alto</b></span><span><kbd>J</kbd><b>Feitiço frontal</b></span>
+            <span><kbd>K</kbd><b>Bolha mágica</b></span><span><kbd>U</kbd><b>Rajada frontal</b></span>
+            <span><kbd>L</kbd><b>Escudo</b></span><span><kbd>Q</kbd><b>Teleporte</b></span>
+            <span><kbd>R</kbd><b>Carregar varinha</b></span><span><kbd>E</kbd><b>Interagir</b></span>
+            <span><kbd>C</kbd><b>Agachar</b></span><span><kbd>P</kbd><b>Pausar</b></span>
+            <span><kbd>F</kbd><b>Tela cheia</b></span><span><kbd>M</kbd><b>Silenciar</b></span>
+          </div>
+          <p class="modal-hint">Pressione <kbd>TAB</kbd> novamente para fechar.</p>
+        </div>
+      </section>
+
+      <section id="sound-panel" class="game-modal hidden" aria-labelledby="sound-title" aria-hidden="true">
+        <div class="modal-card sound-card">
+          <p class="eyebrow">CONFIGURAÇÕES</p>
+          <h2 id="sound-title">SOM</h2>
+          <label class="sound-toggle"><input id="music-enabled" type="checkbox" checked /> Música folk celta</label>
+          <label for="music-volume">Volume da música <output id="music-value">45%</output></label>
+          <input id="music-volume" type="range" min="0" max="100" value="45" />
+          <label class="sound-toggle"><input id="sfx-enabled" type="checkbox" checked /> Efeitos sonoros</label>
+          <label for="sfx-volume">Volume dos efeitos <output id="sfx-value">70%</output></label>
+          <input id="sfx-volume" type="range" min="0" max="100" value="70" />
+          <button id="sound-close" class="primary compact" type="button">FECHAR</button>
+          <p class="modal-hint"><kbd>M</kbd> silencia ou restaura todo o áudio.</p>
+        </div>
+      </section>
+
+      <div id="touch-controls" aria-label="Controles por toque">
+        <div class="touch-move">
+          <button data-action="left" aria-label="Esquerda">◀</button>
+          <button data-action="right" aria-label="Direita">▶</button>
+          <button data-action="down" aria-label="Agachar">▼</button>
+        </div>
+        <div class="touch-actions">
+          <button class="small" data-action="shield" aria-label="Escudo">◈</button>
+          <button class="small" data-action="teleport" aria-label="Teleporte">✦</button>
+          <button data-action="attack" aria-label="Atacar">⚡</button>
+          <button data-action="jump" aria-label="Pular">↑</button>
+        </div>
+      </div>
+      <p id="status" class="sr-only" aria-live="polite"></p>
+    </main>
+    <script type="module" src="game.js?v=6"></script>
+  </body>
+</html>

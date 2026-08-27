@@ -1,0 +1,10 @@
+{
+  "name": "Mini Merlin",
+  "short_name": "Merlin",
+  "start_url": "./",
+  "display": "fullscreen",
+  "background_color": "#09071c",
+  "theme_color": "#15103a",
+  "description": "Uma aventura 8-bit pela floresta de Brocéliande.",
+  "icons": [{ "src": "icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }]
+}
