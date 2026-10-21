@@ -1,4 +1,12 @@
-# Mini Merlin
+# Mini Merlin 🧙
+
+**Um joguinho de plataforma 8-bit do mago Merlin — ainda cru, com muito pela frente.**
+
+> **Status:** protótipo jogável. Plano de evolução (fases, inimigos, história, arte, CI) em **[PLANO.md](PLANO.md)**.
+
+---
+
+## Detalhes técnicos
 
 Um jogo de plataforma 8-bit leve, feito em Canvas e JavaScript puro. Explore a floresta de Brocéliande, encontre as três runas perdidas, enfrente dragões e abra o caminho para Camelot.
 
@@ -50,3 +58,6 @@ O projeto é inteiramente estático. Pode ser publicado diretamente no GitHub Pa
 - Cenário, plataformas, Merlin e goblins usam os PNGs fornecidos no diretório `assets/`; o fundo preto é removido em memória durante o carregamento, preservando os arquivos originais.
 - Estado determinístico exposto por `window.render_game_to_text` para testes.
 - Suíte de integração em `tests/e2e.mjs`.
+
+
+> Este README e o PLANO.md foram reorganizados em 21/10/2026 a partir da visão do André. Itens marcados como **planejado** ainda não existem no código.
